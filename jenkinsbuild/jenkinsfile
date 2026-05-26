@@ -18,7 +18,7 @@ pipeline {
 
         stage("AppCode Checkout"){
             steps {
-                git branch:'project1', url:'https://github.com/prateekkumawat/kubernetes-12-ay.git'
+                git branch:'project1', url:'https://github.com/AshwiniKY/Project_1_Netflix_Cone.git'
             }
         }
         

@@ -45,21 +45,21 @@ pipeline {
         stage("CreateImage"){
             steps{
                 dir('Application-Code/'){
-                    sh 'docker build -t prateekkumawat/netflix:0.1.1 . '
+                    sh 'docker build -t AshwiniKY/netflix:0.1.1 . '
                 }            
             }
         }
         
         stage("Image scan"){
             steps{
-              sh 'trivy image prateekkumawat/netflix:0.1.1 >> scanreport.txt '
+              sh 'trivy image AshwiniKY/netflix:0.1.1 >> scanreport.txt '
             }
         }
 
         stage("push Image"){
           steps {
                sh 'docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW '
-               sh ' docker push prateekkumawat/netflix:0.1.1 '
+               sh ' docker push AshwiniKY/netflix:0.1.1 '
             }
         }
          
@@ -87,7 +87,7 @@ pipeline {
                                 { "name": "🟢 **Status**", "value": "**SUCCESS ✅**" },
                                 { "name": "🔢 **Build**", "value": "**#${env.BUILD_NUMBER}**" },
                                 { "name": "🌿 **Branch / Tag**", "value": "**${env.GIT_BRANCH ?: params.GIT_REF}**" },
-                                { "name": "🟢 **image**", "value": "**prateekkumawat/pythonapp:v0.0.1" },
+                                { "name": "🟢 **image**", "value": "**AshwiniKY/netflix:0.1.1" },
                                 { "name": "🔗 **Build URL**", "value": "[**Open Build**](${env.BUILD_URL})" }
                             ],
                             "text": "🚀 **Build completed successfully!**"
